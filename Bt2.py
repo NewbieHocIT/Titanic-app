@@ -7,7 +7,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import os
 
-df = pd.read_csv("C:/TraThanhTri/PYthon/TriTraThanh/MLvsPython/processed_data.csv")
+# Load dataset
+df = pd.read_csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
+df = df[['Survived', 'Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']]
+df.dropna(inplace=True)
+df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
 
 # Split data
 X = df.drop(columns=['Survived'])
